@@ -1,0 +1,73 @@
+using UnityEditor;
+using UnityEngine;
+
+namespace JamalTools.Editor
+{
+    [Header("MADE BY JAMAL (CREDITS NOT NEEDED)")]
+    [InitializeOnLoad]
+    public static class HierarchyColorUtility
+    {
+        static Texture2D gradient;
+
+        static HierarchyColorUtility()
+        {
+            gradient = CreateGradient();
+            EditorApplication.hierarchyWindowItemOnGUI += OnItemGUI;
+        }
+
+        static void OnItemGUI(int id, Rect rect)
+        {
+            GameObject obj = EditorUtility.InstanceIDToObject(id) as GameObject;
+            if (obj == null) return;
+
+            string n = obj.name;
+
+            if (n.Contains("--EXAMPLE--"))
+                DrawBar(rect, new Color(0.62f, 0.55f, 0.20f));
+
+            if (n.Contains("--EXAMPLE--"))
+                DrawBar(rect, new Color(0.55f, 0.18f, 0.18f));
+
+            if (n.Contains("--EXAMPLE--"))
+                DrawBar(rect, new Color(0f, 1f, 0f));
+        }
+
+        static void DrawBar(Rect rect, Color col)
+        {
+            float offset = 28f;
+
+            Rect r = new Rect(
+                rect.x + offset,
+                rect.y + 1,
+                rect.width - offset,
+                rect.height - 2
+            );
+
+            GUI.color = new Color(col.r, col.g, col.b, 0.9f);
+            GUI.DrawTexture(r, gradient);
+            GUI.color = Color.white;
+        }
+
+        static Texture2D CreateGradient()
+        {
+            int width = 256;
+            Texture2D tex = new Texture2D(width, 1);
+
+            for (int i = 0; i < width; i++)
+            {
+                float t = i / (float)(width - 1);
+
+                float fade =
+                    Mathf.SmoothStep(0f, 0.2f, t) *
+                    Mathf.SmoothStep(1f, 0.8f, t);
+
+                tex.SetPixel(i, 0, new Color(1, 1, 1, fade));
+            }
+
+            tex.Apply();
+            tex.wrapMode = TextureWrapMode.Clamp;
+
+            return tex;
+        }
+    }
+}
