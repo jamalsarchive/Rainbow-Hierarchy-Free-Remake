@@ -6,12 +6,13 @@ All feedback is helpful.
 
 **How To Set It Up**
 
-- Download Script
-- Import to editor folder
+- Copy code
+- Make a script called "HierarchyColorUtility" in editor folder
 - Open the script
 - Replace the --EXAMPLE-- with what you want to be colored
 - Go back to unity
 - Change how you like
 
+No credits needed.
 And thats all!
 Hope you enjoy as this took me an hr to code!
