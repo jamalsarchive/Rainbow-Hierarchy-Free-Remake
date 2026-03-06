@@ -4,6 +4,8 @@
 This is a $35 tool on the unity asset store so I remade it for you to have FOR FREE!
 All feedback is helpful.
 
+REAL Rainbow Hierarchy: https://assetstore.unity.com/packages/tools/utilities/vhierarchy-2-253397
+
 **How To Set It Up**
 
 - Copy code
